@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  ruby:
+    image: ruby
+    volumes:
+      - "./code:/code"
+    working_dir: /code
+
