@@ -13,15 +13,10 @@ RUN apt-get update \
         libfontconfig1 libfontconfig1-dev
 
 # install phantomjs
-RUN cd /tmp \
- && wget -O phantomjs.tar.bz2 "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2" \
- && tar xvjf phantomjs.tar.bz2 --strip 1 \
- && cp /tmp/bin/phantomjs /usr/local/bin/phantomjs \
- && ls -la /tmp \
- && rm -rf /tmp/*
-
-# && wget -O phantomjs.tar.bz2 "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2" \
-
+ADD https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 /tmp
+RUN cd /tmp && tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2 --strip 1 
+RUN cp /tmp/bin/phantomjs /usr/local/bin/phantomjs 
+RUN rm -rf /tmp/*
 
 # do a bundle install of the basic stuff
 RUN mkdir /code
